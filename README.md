@@ -1,18 +1,27 @@
 # Bi-directional Attention Flow for Machine Comprehension
  
+<<<<<<< HEAD
 - This the original implementation of [Bi-directional Attention Flow for Machine Comprehension][paper] (Seo et al., 2016).
 - This is tensorflow v1.1.0 comaptible version. This is not compatible with previous trained models, 
 so if you want to use them, go to [v0.2.1][v0.2.1]. 
+=======
+- This the original implementation of [Bi-directional Attention Flow for Machine Comprehension][paper].
+>>>>>>> 49004549e9a88b78c359b31481afa7792dbb3f4a
 - The CodaLab worksheet for the [SQuAD Leaderboard][squad] submission is available [here][worksheet].
+- For TensorFlow v1.2 compatible version, see the [dev][dev] branch.
 - Please contact [Minjoon Seo][minjoon] ([@seominjoon][minjoon-github]) for questions and suggestions.
 
 ## 0. Requirements
 #### General
-- Python (developed on 3.5.2. Issues have been reported with Python 2!)
-- unzip
+- Python (verified on 3.5.2. Issues have been reported with Python 2!)
+- unzip, wget (for running `download.sh` only)
 
 #### Python Packages
+<<<<<<< HEAD
 - tensorflow (deep learning library, verified on 1.1.0)
+=======
+- tensorflow (deep learning library, only works on r0.11)
+>>>>>>> 49004549e9a88b78c359b31481afa7792dbb3f4a
 - nltk (NLP tools, verified on 3.2.1)
 - tqdm (progress bar, verified on 4.7.4)
 - jinja2 (for visaulization; if you only train and test, not needed)
@@ -31,6 +40,7 @@ python -m squad.prepro
 ```
 
 ## 2. Training
+The model has ~2.5M parameters.
 The model was trained with NVidia Titan X (Pascal Architecture, 2016).
 The model requires at least 12GB of GPU RAM.
 If your GPU RAM is smaller than 12GB, you can either decrease batch size (performance might degrade),
@@ -52,6 +62,10 @@ You can speed up the training process with optimization flags:
 python -m basic.cli --mode train --noload --len_opt --cluster
 ```
 You can still omit them, but training will be much slower.
+
+Note that during the training, the EM and F1 scores from the occasional evaluation are not the same with the score from official squad evaluation script. 
+The printed scores are not official (our scoring scheme is a bit harsher).
+To obtain the official number, use the official evaluator (copied in `squad` folder, `squad/evaluate-v1.1.py`). For more information See 3.Test.
 
 
 ## 3. Test
@@ -111,21 +125,30 @@ Then you can see demo webpage on localhost:1995
 
 ### Dev Data
 
+<<<<<<< HEAD
 |          | EM (%) | F1 (%) |
 | -------- |:------:|:------:|
 | single   | 67.8   | 77.4   |
 
 ###Dev Data (old)
 NOTE: These numbers are from [v0.2.1][v0.2.1]. 
+=======
+Note these scores are from the official evaluator (copied in `squad` folder, `squad/evaluate-v1.1.py`). For more information See 3.Test.
+The scores appeared during the training could be lower than the scores from the official evaluator. 
+>>>>>>> 49004549e9a88b78c359b31481afa7792dbb3f4a
 
 |          | EM (%) | F1 (%) |
 | -------- |:------:|:------:|
 | single   | 67.7   | 77.3   |
 | ensemble | 72.6   | 80.7   |
 
+<<<<<<< HEAD
 
 ###Test Data (old)
 NOTE: These numbers are from [v0.2.1][v0.2.1]. 
+=======
+### Test Data
+>>>>>>> 49004549e9a88b78c359b31481afa7792dbb3f4a
 
 |          | EM (%) | F1 (%) |
 | -------- |:------:|:------:|
@@ -163,6 +186,9 @@ Similarly, you can speed up your testing by:
 ```
 python -m basic.cli --num_gpus 3 --batch_size 20 
 ```
+
+## Demo
+For now, please refer to the `demo` branch of this repository.
  
 
 [multi-gpu]: https://www.tensorflow.org/versions/r0.11/tutorials/deep_cnn/index.html#training-a-model-using-multiple-gpu-cards
@@ -172,4 +198,8 @@ python -m basic.cli --num_gpus 3 --batch_size 20
 [demo]: https://allenai.github.io/bi-att-flow/demo
 [minjoon]: https://seominjoon.github.io
 [minjoon-github]: https://github.com/seominjoon
+<<<<<<< HEAD
 [v0.2.1]: https://github.com/allenai/bi-att-flow/tree/v0.2.1
+=======
+[dev]: https://github.com/allenai/bi-att-flow/tree/dev
+>>>>>>> 49004549e9a88b78c359b31481afa7792dbb3f4a
